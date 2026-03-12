@@ -38,7 +38,7 @@ export function DeliveryEditor({ deliveries, onChange }: DeliveryEditorProps) {
         <p className="text-sm text-gray-400">Žádné způsoby dopravy</p>
       )}
       {deliveries.map((delivery, i) => (
-        <div key={i} className="flex gap-2 items-start bg-gray-50 p-2 rounded">
+        <div key={i} className="flex flex-wrap gap-2 items-start bg-gray-50 p-2 rounded">
           <select
             value={
               DELIVERY_METHODS.some((m) => m.id === delivery.deliveryId)
@@ -49,7 +49,7 @@ export function DeliveryEditor({ deliveries, onChange }: DeliveryEditorProps) {
               if (e.target.value === '__custom') return;
               updateDelivery(i, { deliveryId: e.target.value });
             }}
-            className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500 bg-white"
+            className="flex-1 min-w-[140px] px-2 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500 bg-white"
           >
             <option value="">Vyberte dopravce...</option>
             {DELIVERY_METHODS.map((m) => (
@@ -65,7 +65,7 @@ export function DeliveryEditor({ deliveries, onChange }: DeliveryEditorProps) {
               value={delivery.deliveryId}
               onChange={(e) => updateDelivery(i, { deliveryId: e.target.value })}
               placeholder="ID dopravce"
-              className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500"
+              className="flex-1 min-w-[120px] px-2 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500"
             />
           )}
           <input
@@ -75,7 +75,7 @@ export function DeliveryEditor({ deliveries, onChange }: DeliveryEditorProps) {
               updateDelivery(i, { deliveryPrice: parseFloat(e.target.value) || 0 })
             }
             placeholder="Cena"
-            className="w-24 px-2 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500"
+            className="w-full sm:w-24 px-2 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500"
           />
           <input
             type="number"
@@ -86,12 +86,12 @@ export function DeliveryEditor({ deliveries, onChange }: DeliveryEditorProps) {
               })
             }
             placeholder="Dobírka"
-            className="w-24 px-2 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500"
+            className="w-full sm:w-24 px-2 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500"
           />
           <button
             type="button"
             onClick={() => removeDelivery(i)}
-            className="p-1.5 text-gray-400 hover:text-red-500 transition-colors"
+            className="p-1.5 text-gray-400 hover:text-red-500 transition-colors shrink-0"
             title="Odebrat"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

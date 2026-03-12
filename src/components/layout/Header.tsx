@@ -28,9 +28,9 @@ export function Header() {
   return (
     <header className="bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-6">
-            <h1 className="text-xl font-bold text-gray-900">
+        <div className="flex flex-wrap items-center justify-between gap-2 py-3 sm:h-16 sm:py-0">
+          <div className="flex items-center gap-2 sm:gap-6">
+            <h1 className="text-lg sm:text-xl font-bold text-gray-900">
               Heureka XML Editor
             </h1>
             {isLoaded && (
@@ -52,16 +52,16 @@ export function Header() {
             )}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {isLoaded && (
               <>
-                <span className="text-sm text-gray-500">
+                <span className="text-sm text-gray-500 truncate max-w-[120px] sm:max-w-none">
                   {fileName}
                   {isDirty && <span className="text-orange-500 ml-1">*</span>}
                 </span>
                 <button
                   onClick={handleExport}
-                  className="px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-md hover:bg-green-700 transition-colors"
+                  className="px-3 sm:px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-md hover:bg-green-700 transition-colors whitespace-nowrap"
                 >
                   Stáhnout XML
                 </button>

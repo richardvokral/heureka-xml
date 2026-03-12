@@ -37,25 +37,25 @@ export function ParamEditor({ params, onChange }: ParamEditorProps) {
         <p className="text-sm text-gray-400">Žádné parametry</p>
       )}
       {params.map((param, i) => (
-        <div key={i} className="flex gap-2 items-start">
+        <div key={i} className="flex flex-wrap gap-2 items-start">
           <input
             type="text"
             value={param.paramName}
             onChange={(e) => updateParam(i, 'paramName', e.target.value)}
             placeholder="Název parametru"
-            className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500"
+            className="flex-1 min-w-[120px] px-2 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500"
           />
           <input
             type="text"
             value={param.val}
             onChange={(e) => updateParam(i, 'val', e.target.value)}
             placeholder="Hodnota"
-            className="flex-1 px-2 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500"
+            className="flex-1 min-w-[120px] px-2 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500"
           />
           <button
             type="button"
             onClick={() => removeParam(i)}
-            className="p-1.5 text-gray-400 hover:text-red-500 transition-colors"
+            className="p-1.5 text-gray-400 hover:text-red-500 transition-colors shrink-0"
             title="Odebrat"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
