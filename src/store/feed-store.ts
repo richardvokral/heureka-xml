@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { ShopItem, ValidationError, ViewMode, FilterStatus } from '../types/heureka';
+import type { ShopItem, Delivery, ValidationError, ViewMode, FilterStatus } from '../types/heureka';
 import { parseXml } from '../lib/xml-parser';
 import { serializeXml } from '../lib/xml-serializer';
 import { validateFeed } from '../lib/validator';
@@ -30,6 +30,7 @@ interface FeedStore {
   setView: (view: ViewMode) => void;
   setSearch: (query: string) => void;
   setFilter: (filter: FilterStatus) => void;
+  bulkSetDelivery: (delivery: Delivery, mode: 'add' | 'replace') => void;
   exportXml: () => string;
   revalidate: () => void;
 }
@@ -128,6 +129,18 @@ export const useFeedStore = create<FeedStore>((set, get) => ({
   setSearch: (query) => set({ searchQuery: query }),
 
   setFilter: (filter) => set({ filterStatus: filter }),
+
+  bulkSetDelivery: (delivery, mode) => {
+    const items = get().items.map((item) => ({
+      ...item,
+      deliveries:
+        mode === 'replace'
+          ? [delivery]
+          : [...item.deliveries, delivery],
+    }));
+    const validation = validateFeed(items);
+    set({ items, validationErrors: validation.errors, isDirty: true });
+  },
 
   exportXml: () => serializeXml(get().items),
 
