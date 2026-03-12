@@ -12,7 +12,7 @@ export function ItemTable() {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <h2 className="text-lg font-semibold text-gray-900">
           Položky ({totalItems})
         </h2>
@@ -39,7 +39,7 @@ export function ItemTable() {
 
       <SearchBar />
 
-      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-lg border border-gray-200 overflow-x-auto">
         {filteredItems.length === 0 ? (
           <div className="p-8 text-center text-gray-500">
             {totalItems === 0

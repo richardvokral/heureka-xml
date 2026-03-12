@@ -65,7 +65,7 @@ export function ItemEditor() {
       <div className="absolute inset-0 bg-black/30" onClick={handleClose} />
 
       {/* Panel */}
-      <div className="relative w-full max-w-2xl bg-white shadow-xl overflow-y-auto">
+      <div className="relative w-full sm:max-w-2xl bg-white shadow-xl overflow-y-auto">
         <div className="sticky top-0 z-10 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
           <h2 className="text-lg font-semibold text-gray-900">Upravit položku</h2>
           <div className="flex gap-2">
@@ -133,7 +133,7 @@ export function ItemEditor() {
               <FieldError itemId={selectedItemId} field="url" />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   PRICE_VAT <span className="text-red-500">*</span>
@@ -243,7 +243,7 @@ export function ItemEditor() {
                   <FieldError itemId={selectedItemId} field="manufacturer" />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       EAN
@@ -276,7 +276,7 @@ export function ItemEditor() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       ITEM_TYPE

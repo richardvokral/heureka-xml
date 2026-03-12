@@ -60,10 +60,10 @@ export function ItemRow({ item }: ItemRowProps) {
       <td className="px-4 py-3 text-sm text-gray-900 text-right whitespace-nowrap">
         {item.priceVat > 0 ? `${formatPrice(item.priceVat)} Kč` : '—'}
       </td>
-      <td className="px-4 py-3 text-sm text-gray-500 max-w-[200px] truncate">
+      <td className="px-4 py-3 text-sm text-gray-500 truncate">
         {item.categoryText || '—'}
       </td>
-      <td className="px-4 py-3 text-right">
+      <td className="px-4 py-3 text-right whitespace-nowrap">
         <div className="flex gap-1 justify-end">
           <button
             onClick={handleDuplicate}

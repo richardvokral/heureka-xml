@@ -19,7 +19,7 @@ export function FileDropZone() {
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
-          className={`border-2 border-dashed rounded-xl p-12 transition-colors cursor-pointer ${
+          className={`border-2 border-dashed rounded-xl p-6 sm:p-12 transition-colors cursor-pointer ${
             isDragging
               ? 'border-green-500 bg-green-50'
               : 'border-gray-300 hover:border-gray-400 bg-white'
