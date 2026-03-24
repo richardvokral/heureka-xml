@@ -3,12 +3,14 @@ import { useFeedStore, useFilteredItems } from '../../store/feed-store';
 import { SearchBar } from './SearchBar';
 import { ItemRow } from './ItemRow';
 import { BulkDeliveryModal } from './BulkDeliveryModal';
+import { BulkManufacturerModal } from './BulkManufacturerModal';
 
 export function ItemTable() {
   const addItem = useFeedStore((s) => s.addItem);
   const totalItems = useFeedStore((s) => s.items.length);
   const filteredItems = useFilteredItems();
   const [showBulkDelivery, setShowBulkDelivery] = useState(false);
+  const [showBulkManufacturer, setShowBulkManufacturer] = useState(false);
 
   return (
     <div className="space-y-4">
@@ -17,6 +19,13 @@ export function ItemTable() {
           Položky ({totalItems})
         </h2>
         <div className="flex items-center gap-2">
+          <button
+            onClick={() => setShowBulkManufacturer(true)}
+            disabled={totalItems === 0}
+            className="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          >
+            Hromadný výrobce
+          </button>
           <button
             onClick={() => setShowBulkDelivery(true)}
             disabled={totalItems === 0}
@@ -35,6 +44,10 @@ export function ItemTable() {
 
       {showBulkDelivery && (
         <BulkDeliveryModal onClose={() => setShowBulkDelivery(false)} />
+      )}
+
+      {showBulkManufacturer && (
+        <BulkManufacturerModal onClose={() => setShowBulkManufacturer(false)} />
       )}
 
       <SearchBar />

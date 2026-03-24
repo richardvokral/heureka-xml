@@ -31,6 +31,7 @@ interface FeedStore {
   setSearch: (query: string) => void;
   setFilter: (filter: FilterStatus) => void;
   bulkSetDelivery: (delivery: Delivery, mode: 'add' | 'replace') => void;
+  bulkSetManufacturer: (manufacturer: string) => void;
   exportXml: () => string;
   revalidate: () => void;
 }
@@ -137,6 +138,15 @@ export const useFeedStore = create<FeedStore>((set, get) => ({
         mode === 'replace'
           ? [delivery]
           : [...item.deliveries, delivery],
+    }));
+    const validation = validateFeed(items);
+    set({ items, validationErrors: validation.errors, isDirty: true });
+  },
+
+  bulkSetManufacturer: (manufacturer) => {
+    const items = get().items.map((item) => ({
+      ...item,
+      manufacturer: manufacturer || undefined,
     }));
     const validation = validateFeed(items);
     set({ items, validationErrors: validation.errors, isDirty: true });
