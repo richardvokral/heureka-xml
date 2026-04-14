@@ -53,6 +53,12 @@ export function Header() {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
+            <a
+              href="#/decibel"
+              className="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors whitespace-nowrap"
+            >
+              Měřič dB
+            </a>
             {isLoaded && (
               <>
                 <span className="text-sm text-gray-500 truncate max-w-[120px] sm:max-w-none">
